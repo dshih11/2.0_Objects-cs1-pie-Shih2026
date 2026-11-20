@@ -171,7 +171,7 @@ public class BasicGameApp implements Runnable {
 		bufferStrategy.show();
 	}
 	public void crashing (){
-		if(astro.hitBox.intersects(astro2.hitBox)){
+		if(astro.hitBox.intersects(astro2.hitBox) && astro.isCrashing == false){//when they are intersecting
 			System.out.println("crash");
 			astro.dx = -astro.dx;
 			astro2.dx = -astro2.dx;
@@ -179,6 +179,14 @@ public class BasicGameApp implements Runnable {
 			astro.width = 2+astro.width;
 			astro2.height = 2+astro2.height;
 			astro2.width = 2+astro2.width;
+
+
+			astro.isCrashing = true;
 		}
+
+		if(!astro.hitBox.intersects(astro2.hitBox)){//when they are not intersecting
+			astro.isCrashing = false;
+		}
+
 	}
 }
